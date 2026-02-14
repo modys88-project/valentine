@@ -147,7 +147,7 @@
     <!-- Background Music - AUTOPLAY -->
     <audio id="bgMusic" loop>
         <!-- GANTI DENGAN LINK MP3 KAMU -->
-        <source src="music.mp3" type="audio/mpeg">
+        <source src="music1.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Tombol Play/Pause Music -->
@@ -157,19 +157,19 @@
 
     <div class="container">
         <!-- GANTI PERTANYAAN DI SINI -->
-        <h1 id="mainQuestion">Mau jadi pacar aku gak? 💕</h1>
+        <h1 id="mainQuestion">Will you be my Valentine? 💕</h1>
         
         <div class="gif-container">
             <!-- GANTI URL GIF PERTANYAAN DI SINI -->
-            <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="cute">
+            <img src="https://tenor.com/view/cat-gif-26024720" alt="cute">
         </div>
 
         <!-- Teks yang berubah setiap kali hover No -->
         <div id="responseText"></div>
         
         <div class="buttons-container">
-            <button class="btn" id="yesBtn">Yes! ❤️</button>
-            <button class="btn" id="noBtn">No</button>
+            <button class="btn" id="yesBtn">Mau banget Pip! ❤️</button>
+            <button class="btn" id="noBtn">Nggak duu deh</button>
         </div>
     </div>
 
@@ -183,27 +183,27 @@
 
         // GANTI TEKS-TEKS INI SESUAI KEINGINAN KAMU!
         const responses = [
-            "Yakin gak mau? 🥺",
+            "Yakin gak mau Miy? 🥺",
             "Serius nih gak mau? 😢",
-            "Coba pikir lagi deh... 💭",
+            "Coba pikir lagi deh Miy... 💭",
             "Masa iya sih gak mau? 😔",
             "Aku sedih nih... 💔",
-            "Please... 🥹",
-            "Ayolah, bilang iya dong! 😭",
+            "Please lah... 🥹",
+            "Ayolah, bilang iya Miy! 😭",
             "Udah deh, pasti kamu mau kok! ❤️"
         ];
 
         // GANTI GIF-GIF INI SESUAI KEINGINAN KAMU!
         // Setiap kali hover No, GIF bakal berubah sesuai urutan
         const gifs = [
-            "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif", // GIF awal
-            "https://media.tenor.com/2sjHTz4QbjoAAAAi/milk-and-mocha-cute.gif", // Hover 1
-            "https://media.tenor.com/tEu-d3y0rJ0AAAAi/milk-and-mocha-bear-couple.gif", // Hover 2
-            "https://media.tenor.com/E2fyiGb-SE8AAAAi/bear-cry.gif", // Hover 3
-            "https://media.tenor.com/RBEJNukO3qUAAAAi/milk-mocha-sad.gif", // Hover 4
-            "https://media.tenor.com/5p6R_aX-AqsAAAAi/crying-sad.gif", // Hover 5
-            "https://media.tenor.com/fSUENWLXRe0AAAAi/bear-please.gif", // Hover 6
-            "https://media.tenor.com/kWBTLlhhwy8AAAAi/milk-and-mocha-couple.gif" // Hover 7
+            "https://tenor.com/view/cat-gif-26024720", // GIF awal
+            "https://tenor.com/view/begging-cat-cat-cute-sweet-gif-8754256510208746708", // Hover 1
+            "https://tenor.com/view/cute-kitten-begging-attention-cat-gif-8380127", // Hover 2
+            "https://tenor.com/view/cute-kitten-begging-attention-gif-8380139", // Hover 3
+            "https://tenor.com/view/frugit-frugit-official-cat-cats-cat-sad-gif-6844256000627372125", // Hover 4
+            "https://tenor.com/view/cc-gif-12066726736448378906", // Hover 5
+            "https://tenor.com/view/meowsad-catmeme-gif-1923621111806454717", // Hover 6
+            "https://tenor.com/view/chat-pouce-pouce-en-l'air-pouce-lev%C3%A9-triste-gif-4952292682483348824" // Hover 7
         ];
 
         // Set posisi awal tombol No (di sebelah Yes)
