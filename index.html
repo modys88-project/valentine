@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertanyaan Penting ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        #responseText {
+            font-size: 1.2em;
+            color: #ff4757;
+            margin-top: 20px;
+            font-weight: bold;
+            min-height: 30px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .gif-container {
+            margin: 30px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .buttons-container {
+            margin-top: 40px;
+            position: relative;
+            min-height: 300px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        #yesBtn:hover {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        #noBtn {
+            background: #f1f1f1;
+            color: #666;
+            position: absolute;
+            z-index: 5;
+            transition: left 0.3s ease, top 0.3s ease;
+        }
+
+        #noBtn:hover {
+            background: #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- GANTI PERTANYAAN DI SINI -->
+        <h1>Mau jadi pacar aku gak? 💕</h1>
+        
+        <div class="gif-container">
+            <!-- GANTI URL GIF PERTANYAAN DI SINI -->
+            <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="cute">
+        </div>
+
+        <!-- Teks yang berubah setiap kali hover No -->
+        <div id="responseText"></div>
+        
+        <div class="buttons-container">
+            <button class="btn" id="yesBtn">Yes! ❤️</button>
+            <button class="btn" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const responseText = document.getElementById('responseText');
+        let yesBtnSize = 1;
+        let attemptCount = 0;
+
+        // GANTI TEKS-TEKS INI SESUAI KEINGINAN KAMU!
+        const responses = [
+            "Yakin gak mau? 🥺",
+            "Serius nih gak mau? 😢",
+            "Coba pikir lagi deh... 💭",
+            "Masa iya sih gak mau? 😔",
+            "Aku sedih nih... 💔",
+            "Please... 🥹",
+            "Ayolah, bilang iya dong! 😭",
+            "Udah deh, pasti kamu mau kok! ❤️"
+        ];
+
+        // Set posisi awal tombol No (di sebelah Yes)
+        function setInitialNoPosition() {
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            const yesRect = yesBtn.getBoundingClientRect();
+            
+            // Posisi No di sebelah kanan Yes dengan jarak 20px
+            noBtn.style.left = (yesRect.right - containerRect.left + 20) + 'px';
+            noBtn.style.top = (yesRect.top - containerRect.top) + 'px';
+        }
+
+        // Panggil saat halaman load
+        window.addEventListener('load', setInitialNoPosition);
+
+        // Ketika hover atau sentuh tombol No, dia kabur!
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('touchstart', moveNoButton);
+
+        function moveNoButton() {
+            // Tampilkan teks yang berbeda sesuai jumlah attempt
+            if (attemptCount < responses.length) {
+                responseText.textContent = responses[attemptCount];
+                responseText.style.animation = 'none';
+                setTimeout(() => {
+                    responseText.style.animation = 'fadeIn 0.5s ease-in';
+                }, 10);
+            }
+            
+            attemptCount++;
+            
+            // Perbesar tombol Yes setiap kali No diklik/dihover
+            yesBtnSize += 0.2;
+            yesBtn.style.transform = `scale(${yesBtnSize})`;
+            
+            // Pindahkan tombol No ke posisi random yang lebih luas
+            const container = document.querySelector('.buttons-container');
+            const containerRect = container.getBoundingClientRect();
+            const yesRect = yesBtn.getBoundingClientRect();
+            
+            let randomX, randomY;
+            let isSafe = false;
+            let attempts = 0;
+            
+            // Coba cari posisi yang gak numpuk dengan tombol Yes
+            while (!isSafe && attempts < 20) {
+                randomX = Math.random() * (containerRect.width - noBtn.offsetWidth);
+                randomY = Math.random() * (containerRect.height - noBtn.offsetHeight);
+                
+                // Hitung jarak dari tombol Yes (relatif ke container)
+                const yesCenterX = yesRect.left - containerRect.left + (yesRect.width / 2);
+                const yesCenterY = yesRect.top - containerRect.top + (yesRect.height / 2);
+                const noCenterX = randomX + (noBtn.offsetWidth / 2);
+                const noCenterY = randomY + (noBtn.offsetHeight / 2);
+                
+                const distance = Math.sqrt(
+                    Math.pow(noCenterX - yesCenterX, 2) + 
+                    Math.pow(noCenterY - yesCenterY, 2)
+                );
+                
+                // Jarak minimal 150px dari tombol Yes (makin besar Yes, makin jauh No harus)
+                const minDistance = 100 + (yesBtnSize * 50);
+                
+                if (distance > minDistance) {
+                    isSafe = true;
+                }
+                attempts++;
+            }
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Setelah beberapa kali coba, bikin tombol No makin kecil
+            if (attemptCount > 3) {
+                const scale = Math.max(0.3, 1 - (attemptCount - 3) * 0.1);
+                noBtn.style.transform = `scale(${scale})`;
+            }
+            
+            // Kalau udah 8 kali coba, sembunyikan tombol No
+            if (attemptCount > 8) {
+                noBtn.style.display = 'none';
+            }
+        }
+
+        // Ketika klik Yes, pindah ke halaman sukses
+        yesBtn.addEventListener('click', function() {
+            // Animasi sebelum pindah halaman
+            yesBtn.textContent = 'Yayy! 🎉';
+            yesBtn.style.transform = `scale(${yesBtnSize * 1.2})`;
+            
+            setTimeout(() => {
+                window.location.href = 'yes.html';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
